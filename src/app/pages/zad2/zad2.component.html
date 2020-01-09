@@ -1,0 +1,24 @@
+<h3>Задание:</h3>
+<p>
+    Для каждой категории работников, указанных в штатном
+    расписании, получить суммарное количество пропущенных
+    рабочих дней без учета отпускных, а также среднемесячный
+    размер выплаченных премий. Результат упорядочить по
+    убыванию количества пропущенных рабочих дней.
+</p>
+
+<h3>Результат</h3>
+<div *ngIf="($table | async) as table">
+    <table>
+        <thead>
+        <th *ngFor="let column of table.header">{{ column.label }}</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of table.rows">
+                <ng-container *ngFor="let cell of row.values; let i = index">
+                    <td class="{{ table.header[i].type }}">{{ cell }}</td>
+                </ng-container>
+            </tr>
+        </tbody>
+    </table>
+</div>
